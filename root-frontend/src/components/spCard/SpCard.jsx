@@ -19,8 +19,6 @@ function SpCard({ item }) {
 
   
 
-  console.log(data)
-
   return (
 
     
@@ -32,20 +30,25 @@ function SpCard({ item }) {
         "Something went wrong!"
       ) : (
         <>
+ 
+ <Link className='link' to={`/view-profile/${item._id}`}>
+
     <img src={data?.profilePicture || spProfile} className='sp-profile-img'/>
-    
+</Link> 
+
     <div className='sp-card-text-contianer'>
       <div className='sp-title-contianer'>
-
+      <Link className='link' to={`/view-profile/${item._id}`}>
       <div className='sp-name-title-container'>
       <h1 className='sp-title'> {item.title}  </h1>
       <p className='sp-name-small'> {data.username} </p>
       </div>
-    
+      </Link> 
       <div className='rating-container'> 
           <img src={rating} className='rating-icon'/>
-          <p className='rating'>5</p>
-          {/* <p className='num-job-done'>(0)</p> */}
+          <p className='rating'>{!isNaN(item.totalStars / item.starNumber) &&
+                Math.round(item.totalStars / item.starNumber)}</p>
+          <p className='num-job-done'>({item.sales})</p>
       </div>
       </div>
       <p className='service-description'>{item.shortDesc}.</p>
@@ -58,7 +61,7 @@ function SpCard({ item }) {
         </div>
       </div>
     </div>
-          <Link className='link' to={`/gig/${item._id}`}>
+          <Link className='link' to={`/view-profile/${item._id}`}>
           <button className='view-profile'>View Profile</button>
           </Link>
           </>

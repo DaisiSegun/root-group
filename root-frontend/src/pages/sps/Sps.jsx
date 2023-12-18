@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 function Sps() {
   // Get the category from the URL using location.pathname
-  const category = useLocation().pathname.split('/')[2];
+  const category = decodeURIComponent(useLocation().pathname.split('/')[2]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['services'],
