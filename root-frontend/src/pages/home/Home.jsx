@@ -10,6 +10,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Testimonial from '../../components/testimonial/Testimonial';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
+import newRequest from '../../../utils/newRequest';
 
 function Home() {
   const [catData, setCatData] = useState([]);
@@ -17,7 +18,7 @@ function Home() {
   
   useEffect(() => {
     // Fetch category data from the backend when the component mounts
-    axios.get('http://localhost:8800/api/cat/all')
+    newRequest.get('/cat/all')
       .then(response => {
         setCatData(response.data.cats);
       })
@@ -43,8 +44,8 @@ function Home() {
       <div className='root-services-section'>
         <div className='cat-container'>
           {/* Display CatCard components with data from the backend */}
-          {catData.map((category) => (
-            <CatCard key={category._id} categoryId={category._id} />
+          {catData.map((cat) => (
+             <CatCard key={cat.category} categoryId={cat._id} />
           ))}
         </div>
 

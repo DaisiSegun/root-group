@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/sign-in" element={<SignIn/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/findsp" element={<Sps/>} />
+        <Route path="/findsp/:cats" element={<Sps/>} />
         <Route path="/view-profile" element={<SpProfile/>} />
         <Route path="/addservice" element={<AddService/>} />
         <Route path="/createservice" element={<CreateService/>} />

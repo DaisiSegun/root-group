@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CatCard.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import newRequest from '../../../utils/newRequest';
 
 function CatCard({ categoryId }) {
   const [catData, setCatData] = useState(null);
@@ -10,10 +11,10 @@ function CatCard({ categoryId }) {
     const fetchCatData = async () => {
       try {
         // Define the API endpoint for fetching cat data by ID
-        const apiUrl = `http://localhost:8800/api/cat/${categoryId}`; // Update the URL based on your API
+        const apiUrl = `/cat/${categoryId}`; // Update the URL based on your API
 
         // Make a GET request to the backend to fetch cat data
-        const response = await axios.get(apiUrl);
+        const response = await newRequest.get(apiUrl);
 
         // Update the state with the fetched cat data
         setCatData(response.data);
@@ -22,7 +23,7 @@ function CatCard({ categoryId }) {
         console.error('Error fetching cat data:', error);
       }
     };
-console.log (catData)
+console.log(categoryId)
     // Call the function to fetch data
     fetchCatData();
   }, [categoryId]);
@@ -33,7 +34,8 @@ console.log (catData)
   }
 
   return (
-    <Link to={`/findsp/${categoryId}`}>
+  
+<Link to={`/findsp/${catData.cat.category}`}>
       <div className='cat-card'>
         <img src={catData.cat.image} className='cat-img' alt={catData.title} />
         <h1 className='title-text'>{catData.cat.title}</h1>
