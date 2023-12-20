@@ -11,6 +11,7 @@ import Testimonial from '../../components/testimonial/Testimonial';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 import newRequest from '../../../utils/newRequest';
+import CallMissedOutgoingIcon from '@mui/icons-material/CallMissedOutgoing';
 
 function Home() {
   const [catData, setCatData] = useState([]);
@@ -30,7 +31,7 @@ function Home() {
 
   const navigateToFindSP = () => {
     // Navigate to the '/findsp' page using useNavigate
-    navigate('/findsp');
+    navigate('/more-service');
   };
 
   return (
@@ -52,7 +53,7 @@ function Home() {
         {/* Show more button to navigate to '/findsp' page */}
         <button className='load-more-button' onClick={navigateToFindSP}>
           View More
-          <KeyboardArrowDownIcon className='load-more-icon' />
+          <CallMissedOutgoingIcon className='load-more-icon' />
         </button>
       </div>
 

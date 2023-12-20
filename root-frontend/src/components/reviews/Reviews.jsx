@@ -1,25 +1,71 @@
 import React from 'react'
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import './Reviews.scss'
-import star from '../../images/rating.svg'
-import avatarTest from '../../images/avatar-test.jpg'
-function Reviews() {
+import Review from '../review/Review'
+
+import newRequest from '../../../utils/newRequest';
+
+function Reviews({serviceId}) {
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: () =>
+      newRequest.get(`/reviews/${serviceId}`).then((res) => {
+        return res.data;
+      }),
+  });
+
+ 
+
+  const mutation = useMutation({
+    mutationFn: (review) => {
+      return newRequest.post("/reviews", review);
+    },
+    onSuccess:()=>{
+      queryClient.invalidateQueries(["reviews"])
+    }
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const desc = e.target[0].value;
+    const star = e.target[1].value;
+    mutation.mutate({ serviceId, desc, star });
+  };
+
   return (
-    <div className='reviews'>
-      <div className='review-title-container'>
 
-        <img className='avatar-test' src={avatarTest}/>
-        <h1 className='review-title'>Oyindamola Sanusi</h1>
+    <div className='review'> 
 
-      </div>
+        {isLoading
+        ? "loading"
+        : error
+        ? "Something went wrong!"
+        : data.map((review) => <Review key={review._id} review={review} />)}
 
-      <div className='reviw-rating'>
-      <h1 className='rating-text'>Rating:</h1>
-      <img src={star}/>
-      <p className='rating-num'>5.0</p>
 
-      </div>
+        <h1 className='review-service'>Review this service</h1>
 
-      <p className='review-des'>Thanks so much on helping fix my phone without having to stress me at all. No single trace of the repair, it literally looks just as new!</p>
+      <form action=""  onSubmit={handleSubmit} className='create-review'>
+
+          <input className='input-review'  placeholder='Write your opinion'/>
+
+          <p className='select-rating' >Select Rating</p>
+
+          <select className='select-star' name="" id="">
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </select>
+
+          <button className='review-button'>Submit</button>
+
+            
+      </form> 
+   
+
 
     </div>
   )

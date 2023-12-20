@@ -5,80 +5,74 @@
   font-family: 'Open Sans';
 }
 
-.reviews {
+.review {
+
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+ 
+  
 
-    .review-title-container {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      margin-top: 1rem;
-
-       .avatar-test {
-        display: flex;
-        width: 2.5rem;
-        height: 2.5rem;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        border-radius: 2rem;
-        border: 1px solid var(--White, #FFF);
-        object-fit: cover;
-          
-
-       }
-
-       .review-title{
-        color: #000;
-        text-align: center;
-        font-family: Open Sans;
-        font-size: 0.875rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.5rem; /* 171.429% */
-
-       }
-    }
-
-    .reviw-rating {
-      display: flex;
-      gap: 0.5rem;
-
-        .rating-text {
-          color: var(--dark-gray, #343434);
-          font-family: Open Sans;
-          font-size: 0.75rem;
-          font-style: normal;
-          font-weight: 700;
-          line-height: 1.5rem; /* 200% */
-
-        }
-
-        .star {
-          width: 1.125rem;
-          height: 1.125rem;
-        }
-
-        .rating-num{
-          color: #FFCA28;
-          font-family: Open Sans;
-          font-size: 1rem;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 1.5rem; /* 150% */
-        }
-    }
-    .review-des{
-      color: var(--dark-gray, #343434);
-      font-family: Open Sans;
-      font-size: 0.75rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.5rem; /* 200% */
-      max-width: 40.9375rem;
-    }
 }
 
+.review-service {
+  font-size: 1rem;
+  margin-left: 2rem;
+ 
+  font-weight: 500;
+}
+
+.select-rating {
+  font-size: 0.75rem;
+  color: darkgray;
+  margin-bottom: 8px;
+}
+.create-review {
+ width: 50%;
+}
+
+.input-review,
+.select-star,
+.review-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.select-star {
+  appearance: none;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.review-button {
+  background-color: #4B762E;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review-button:hover {
+  background-color: #395E23;
+}
+
+/* Optional: Add styles to make the form look visually appealing */
+.create-review {
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-review:focus,
+.select-star:focus {
+  outline: none;
+  border-color: #2196F3;
+}

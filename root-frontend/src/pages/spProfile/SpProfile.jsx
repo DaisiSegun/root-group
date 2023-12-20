@@ -183,15 +183,9 @@ const openWhatsApp = () => {
           </div>
           
       </div>
-{/* 
-    <div className='create-review'>
-      <input  placeholder='Write a review'/>
 
-      <button>Submit</button>
-
-      </div> */}
    
-           <Reviews/>
+    <Reviews serviceId={id}/>
 
     <div className='space1'></div>
       {/* <Footer/> */}

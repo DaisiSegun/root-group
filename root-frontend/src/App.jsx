@@ -1,5 +1,5 @@
 import React from "react"
-import Home from "./pages/home/home"
+import Home from "./pages/home/Home"
 import Sps from "./pages/sps/Sps"
 import SpProfile from "./pages/spProfile/SpProfile"
 import AddService from "./pages/addService/AddService"
@@ -15,6 +15,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import AdminUpload from "./pages/adminUpload/adminUpload"
+import MoreService from "./pages/moreService/moreService"
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
         <Route path="/createservice" element={<CreateService/>} />
         <Route path="/signup-sp" element={<SignUpSp/>} />
         <Route path="/create-admin" element={<AdminUpload/>} />
+        <Route path="/more-service" element={<MoreService/>} />
+        
         
       </Routes>
      </Router>

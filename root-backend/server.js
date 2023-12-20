@@ -6,6 +6,7 @@ import authRoute from './routes/auth.route.js'
 import spRoute from './routes/sp.route.js'
 import catRoute from './routes/cat.route.js'
 import cookieParser from "cookie-parser"
+import reviewRoute from './routes/review.route.js'
 import cors from "cors";
 
 const app = express()
@@ -30,6 +31,7 @@ app.use ("/api/users", userRoute)
 app.use ("/api/auth", authRoute)
 app.use("/api/services", spRoute);
 app.use("/api/cat", catRoute);
+app.use("/api/reviews", reviewRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
