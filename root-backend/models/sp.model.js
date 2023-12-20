@@ -45,7 +45,7 @@ const ServiceSchema = new Schema(
     },
     shortTitle: {
       type: String,
-      required: true,
+      required: false,
     },
     shortDesc: {
       type: String,
@@ -53,7 +53,7 @@ const ServiceSchema = new Schema(
     },
     revisionNumber: {
       type: Number,
-      required: true,
+      required: false,
     },
     sales: {
       type: Number,
