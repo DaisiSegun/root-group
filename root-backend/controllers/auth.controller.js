@@ -60,15 +60,14 @@ export const register = async (req, res, next) => {
       httpOnly: true,
     });
 
-    // Respond with a success message
-    res.status(201).json({ message: 'User registered successfully' });
+    const { ...userDetails } = newUser._doc;
+    res.status(201).json({ message: 'User registered successfully', user: userDetails });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
     next(error);
   }
 };
-
 
 
 export const login = async (req, res, next) => {

@@ -126,15 +126,10 @@ function AdminUpload() {
         {successMessage && <div className='success-box'>{successMessage}</div>}
 
         <div className='button3' onClick={handleRegistration}>
-          Register
+          Create 
         </div>
 
-        <div className='dont-have-an'>
-          Already have an account?{' '}
-          <Link to='/register' className='link'>
-            <span className='sign-up-green'>Sign in</span>
-          </Link>
-        </div>
+       
       </div>
     </div>
   );

@@ -222,7 +222,7 @@ function CreateService() {
               {successMessage && <p className="success-box">{successMessage}</p>}
 
               <button onClick={handleUpload}>
-                {uploading ? "uploading" : "Uploaded"}
+                {uploading ? "uploading" : "Upload"}
               </button>
 
           </div>

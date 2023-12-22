@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Register.scss';
 import logo from '../../images/rootlogo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import newRequest from "../../../utils/newRequest.js";
 
 function Register() {
@@ -14,6 +14,7 @@ function Register() {
     userType: 'user',
   });
 
+  const navigate = useNavigate(); // Fix: Declare navigate with const
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -35,9 +36,11 @@ function Register() {
 
       // Make API call
       const response = await newRequest.post('/auth/register', formData);
-
+      localStorage.setItem("currentUser", JSON.stringify(response.data));
       console.log('Registration successful:', response.data);
-      // You can handle success, e.g., redirect the user to a success page or show a success message
+      navigate("/");
+      
+
     } catch (error) {
       console.error('Registration failed:', error.response.data);
       // Display the error message to the user
@@ -54,7 +57,7 @@ function Register() {
         <div className='sign-in-header'>Sign up</div>
         <p className='sign-up-now'>Sign up now to get started with an account</p>
 
-        {error && <div className='error-box'>{error}</div>}
+
 
         <div className='sign-in-box'>
           <label className='sign-in-text'>Username</label>
@@ -110,6 +113,8 @@ function Register() {
             onChange={handleChange}
           />
         </div>
+
+        {error && <div className='error-box'>{error}</div>}
 
         <div className='button3' onClick={handleRegistration}>
           Register

@@ -16,7 +16,7 @@ import { Link, useParams } from "react-router-dom";
 import { Slider } from "infinite-react-carousel/lib";
 import { useState } from 'react'
 
-
+import getCurrentUser from '../../../utils/getCurrentUser.js';
 
 
 
@@ -80,16 +80,21 @@ const formattedJoinedDate = joinedDate.toLocaleDateString('en-US', {
 });
 
 const openWhatsApp = () => {
-  const message = `I want to hire ${dataUser.username} (${data.title})`;
-  const phoneNumber = "+2349154358139"; // Replace with the actual phone number
+  if (!currentUser) {
+    // If no user is logged in, redirect to the signup page
+    window.location.href = '/register';
+  } else {
+    const message = `I want to hire ${dataUser.username} (${data.title})`;
+    const phoneNumber = '+23479019971557'; // Replace with the actual phone number
 
-  // Construct the WhatsApp link
-  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Construct the WhatsApp link
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-  // Open the link in a new tab
-  window.open(whatsappLink, "_blank");
+    // Open the link in a new tab
+    window.open(whatsappLink, '_blank');
+  }
 };
-
+const currentUser = getCurrentUser();
   return (
     <div className='sp-profile'>
       <Header showSearch={true}/>

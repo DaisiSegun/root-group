@@ -9,13 +9,21 @@
 
 
 .sevice-img-page {
-  width: 100%;
+  width: 41rem;
   height: auto;
   max-height: 27.375rem;
   flex-shrink: 0;
   border-radius: 0.3125rem;
   object-fit: cover;
   background-color: #F5F5F5;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%; // Adjust the width for tablet size
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%; // Adjust the width for mobile size
+  }
 }
 
 
@@ -105,9 +113,12 @@
       .img-container {
         display: flex;
         position: relative; /* Add position relative to the container */
-
+    
+        
+        
         margin-left: 2rem;
         margin-top: 1rem;
+    
     
         
         .left-container {

@@ -49,8 +49,13 @@ export const getServices = async (req, res, next) => {
         ...(q.max && { $lt: q.max }),
       },
     }),
-    ...(q.search && { title: { $regex: q.search, $options: "i" } }),
   };
+
+  // Add search query to filters
+  if (q.search) {
+    filters.title = { $regex: q.search, $options: "i" };
+  }
+
   try {
     const services = await Service.find(filters).sort({ [q.sort]: -1 });
     res.status(200).send(services);
