@@ -19,9 +19,16 @@ function Home() {
   
   useEffect(() => {
     // Fetch category data from the backend when the component mounts
-    newRequest.get('/cat/all')
+    newRequest
+      .get('/cat/all')
       .then(response => {
-        setCatData(response.data.cats);
+        // Shuffle the catData
+        const shuffledCatData = response.data.cats.sort(() => Math.random() - 0.5);
+  
+        // Limit it to 8 items
+        const limitedCatData = shuffledCatData.slice(0, 8);
+  
+        setCatData(limitedCatData);
       })
       .catch(error => {
         console.error('Error fetching category data:', error);

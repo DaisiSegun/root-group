@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/Header';
 import newRequest from '../../../utils/newRequest';
 import CatCard from '../../components/CatCard/CatCard';
+import './MoreService.scss';
 
 function MoreService() {
   const [catData, setCatData] = useState([]);
@@ -44,10 +45,18 @@ function MoreService() {
 
         {/* Show Next and Previous buttons */}
         <div className='pagination-buttons'>
-          <button className='pagination-button' onClick={handlePrevPage}>
+          <button
+            className='previous-button'
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
             Previous
           </button>
-          <button className='pagination-button' onClick={handleNextPage}>
+          <button
+            className='next-button'
+            onClick={handleNextPage}
+            disabled={catData.length < cardsPerPage}
+          >
             Next
           </button>
         </div>

@@ -38,7 +38,7 @@ function Register() {
       const response = await newRequest.post('/auth/register', formData);
       localStorage.setItem("currentUser", JSON.stringify(response.data));
       console.log('Registration successful:', response.data);
-      navigate("/");
+      navigate("/welcome");
       
 
     } catch (error) {

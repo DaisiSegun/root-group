@@ -26,7 +26,7 @@ function Search() {
           onKeyPress={handleKeyPress}
           value={input}
           className='search'
-          placeholder='Which service do you need help with '
+          placeholder='Which services do you require? '
         />
 
         <div onClick={handleSubmit} className='search-icon-container'>
