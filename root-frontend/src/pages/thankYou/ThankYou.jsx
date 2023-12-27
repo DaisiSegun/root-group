@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Header from '../../components/header/Header';
 import './ThankYou.scss'
+import Slider from '../../components/slider/Slider';
 function ThankYou() {
 
   const currentUser = getCurrentUser();
@@ -17,7 +18,7 @@ function ThankYou() {
 
 
 
-    <h1 className='sorry-header'>Thank you for choosing Root {currentUser.user.username} < FavoriteIcon className='love' />  </h1>
+    <h1 className='sorry-header'>Thank you for choosing Root, <p className='sorry-name'>  {currentUser.user.username} </p> < FavoriteIcon className='love' />  </h1>
     <img className='sryImg' src={welcome} />
 
     <Link className='link' to="/">
@@ -25,6 +26,8 @@ function ThankYou() {
     </Link>
   
 </div>
+
+
 </div>
   )
 }

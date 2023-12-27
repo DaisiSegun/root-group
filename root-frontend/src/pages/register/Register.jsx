@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import './Register.scss';
 import logo from '../../images/rootlogo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { css } from "@emotion/react";
+import { PacmanLoader } from "react-spinners";
 import newRequest from "../../../utils/newRequest.js";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -14,8 +22,9 @@ function Register() {
     userType: 'user',
   });
 
-  const navigate = useNavigate(); // Fix: Declare navigate with const
+  const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +36,8 @@ function Register() {
 
   const handleRegistration = async () => {
     try {
+      setLoading(true);
+
       // Make sure passwords match
       if (formData.password !== formData.confirmPassword) {
         console.error('Password and confirm password do not match');
@@ -39,12 +50,12 @@ function Register() {
       localStorage.setItem("currentUser", JSON.stringify(response.data));
       console.log('Registration successful:', response.data);
       navigate("/welcome");
-      
 
     } catch (error) {
       console.error('Registration failed:', error.response.data);
-      // Display the error message to the user
       setError(error.response.data.error || 'Registration failed');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,8 +67,6 @@ function Register() {
       <div className='sign-in-container'>
         <div className='sign-in-header'>Sign up</div>
         <p className='sign-up-now'>Sign up now to get started with an account</p>
-
-
 
         <div className='sign-in-box'>
           <label className='sign-in-text'>Username</label>
@@ -117,7 +126,11 @@ function Register() {
         {error && <div className='error-box'>{error}</div>}
 
         <div className='button3' onClick={handleRegistration}>
-          Register
+          {loading ? (
+            <PacmanLoader color={"#36D7B7"} css={override} size={20} />
+          ) : (
+            'Register'
+          )}
         </div>
 
         <div className='dont-have-an'>

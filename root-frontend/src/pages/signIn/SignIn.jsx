@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import './SignIn.scss';
 import logo from '../../images/rootlogo.png';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { css } from "@emotion/react";
+import { PacmanLoader } from "react-spinners";
 import newRequest from "../../../utils/newRequest.js";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -13,6 +20,7 @@ function SignIn() {
   });
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,19 +33,19 @@ function SignIn() {
 
   const handleLogin = async () => {
     try {
+      setLoading(true);
       const response = await newRequest.post('/auth/login', formData);
       localStorage.setItem("currentUser", JSON.stringify(response.data));
       console.log('Login successful:', response.data);
       navigate("/");
-  
-      // Handle success, e.g., set user state or redirect to a different page
     } catch (error) {
       console.log('Login failed:', error.response.data);
-  
       setError('Invalid username or password');
+    } finally {
+      setLoading(false);
     }
   };
-  
+
   return (
     <div className='sign-in'>
       <Link className='home-logo' to='/'>
@@ -70,7 +78,11 @@ function SignIn() {
         </div>
 
         <div className='button3' onClick={handleLogin}>
-          Login
+          {loading ? (
+            <PacmanLoader color={"#36D7B7"} css={override} size={20} />
+          ) : (
+            'Login'
+          )}
         </div>
 
         <div className='dont-have-an'>

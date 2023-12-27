@@ -10,13 +10,23 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Testimonial from '../../components/testimonial/Testimonial';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
+import { css } from "@emotion/react";
+import { CircleLoader } from "react-spinners";
 import newRequest from '../../../utils/newRequest';
 import CallMissedOutgoingIcon from '@mui/icons-material/CallMissedOutgoing';
+import Slider from '../../components/slider/Slider';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function Home() {
   const [catData, setCatData] = useState([]);
+  const [loading, setLoading] = useState(true); // Added loading state
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     // Fetch category data from the backend when the component mounts
     newRequest
@@ -29,12 +39,13 @@ function Home() {
         const limitedCatData = shuffledCatData.slice(0, 8);
   
         setCatData(limitedCatData);
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch(error => {
         console.error('Error fetching category data:', error);
+        setLoading(false); // Set loading to false in case of an error
       });
   }, []);
-  
 
   const navigateToFindSP = () => {
     // Navigate to the '/findsp' page using useNavigate
@@ -52,9 +63,13 @@ function Home() {
       <div className='root-services-section'>
         <div className='cat-container'>
           {/* Display CatCard components with data from the backend */}
-          {catData.map((cat) => (
-             <CatCard key={cat.category} categoryId={cat._id} />
-          ))}
+          {loading ? (
+            <CircleLoader color={"#36D7B7"} css={override} size={20} />
+          ) : (
+            catData.map((cat) => (
+              <CatCard key={cat.category} categoryId={cat._id} />
+            ))
+          )}
         </div>
 
         {/* Show more button to navigate to '/findsp' page */}
@@ -70,6 +85,7 @@ function Home() {
         <Testimonial />
         <Testimonial />
       </div>
+     
       <Footer />
     </div>
   );

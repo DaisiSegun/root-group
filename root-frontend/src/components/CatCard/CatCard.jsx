@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './CatCard.scss';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { css } from "@emotion/react";
+import { CircleLoader } from "react-spinners";
 import newRequest from '../../../utils/newRequest';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function CatCard({ categoryId }) {
   const [catData, setCatData] = useState(null);
+  const [loading, setLoading] = useState(true); // Added loading state
 
   useEffect(() => {
     const fetchCatData = async () => {
@@ -21,21 +29,28 @@ function CatCard({ categoryId }) {
       } catch (error) {
         // Handle errors, e.g., log the error or show an error message
         console.error('Error fetching cat data:', error);
+      } finally {
+        // Set loading to false once the data is fetched or if there's an error
+        setLoading(false);
       }
     };
-console.log(categoryId)
+
     // Call the function to fetch data
     fetchCatData();
   }, [categoryId]);
 
-  if (!catData) {
+  if (loading) {
     // Render a loading state or placeholder while waiting for data
-    return <p>Loading...</p>;
+    return <CircleLoader color={"#36D7B7"} css={override} size={20} />;
+  }
+
+  if (!catData) {
+    // Render an error state if data is not available
+    return <p>Error loading data</p>;
   }
 
   return (
-  
-<Link to={`/findsp/${catData.cat.category}`}>
+    <Link to={`/findsp/${catData.cat.category}`}>
       <div className='cat-card'>
         <img src={catData.cat.image} className='cat-img' alt={catData.title} />
         <h1 className='title-text'>{catData.cat.title}</h1>

@@ -7,6 +7,28 @@
   font-family: 'Open Sans';
 }
 
+.carousel {
+  width: 41rem;
+
+  height: auto;
+  max-height: 27.375rem;
+  border-radius: 0.3125rem;
+  img {
+    max-height: 500px;
+    object-fit: contain;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    width: 100%; // Adjust the width for tablet size
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%; // Adjust the width for mobile size
+  }
+
+}
+
 
 .sevice-img-page {
   width: 41rem;

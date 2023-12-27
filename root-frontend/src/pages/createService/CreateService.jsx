@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from '../../../utils/newRequest.js'
 import upload from "../../../utils/upload.js";
+import { CircleLoader} from "react-spinners";
 
 function CreateService() {
 
@@ -26,8 +27,12 @@ function CreateService() {
     });
   };
 
-  const handleUpload = async () => {
+
+
+  const handleCreateService = async (e) => {
+    e.preventDefault();
     setUploading(true);
+
     try {
       const images = await Promise.all(
         [...files].map(async (file) => {
@@ -35,44 +40,22 @@ function CreateService() {
           return url;
         })
       );
+
+      const serviceData = { ...state, images }; // Combine service data with uploaded images
+
+      const response = await newRequest.post("/services", serviceData);
+
       setUploading(false);
       dispatch({ type: "ADD_IMAGES", payload: { images } });
-      setSuccessMessage("Images uploaded successfully!");
+      setSuccessMessage("Images uploaded successfully, and service created!");
       setErrorMessage(null);
     } catch (err) {
       console.log(err);
       setUploading(false);
-      setErrorMessage("Error uploading images. Please try again.");
+      setErrorMessage("Error uploading images or creating service. Please try again.");
       setSuccessMessage(null);
     }
   };
-
-  const navigate = useNavigate();
-
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (service) => {
-      return newRequest.post("/services", service);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["myServices"]);
-      setSuccessMessage("Service created successfully!");
-      setErrorMessage(null);
-    },
-    onError: (error) => {
-      console.error(error);
-      setErrorMessage("Error creating service. Please try again.");
-      setSuccessMessage(null);
-    },
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    mutation.mutate(state);
-    // navigate("/")
-  };
-
 
   return (
 
@@ -221,16 +204,25 @@ function CreateService() {
 
               {successMessage && <p className="success-box">{successMessage}</p>}
 
-              <button onClick={handleUpload}>
+              {/* <button onClick={handleUpload}>
                 {uploading ? "uploading" : "Upload"}
-              </button>
+              </button> */}
 
           </div>
 
-          <div onClick={handleSubmit} className='button2'>
-          Create Service
-          <img src={golf}className='golf' />
-          </div>
+          <button onClick={handleCreateService} className='button2'>
+            {uploading ? (
+              <>
+                <CircleLoader size={25} color="#36D7B7" uploading={uploading} />
+                <span style={{ marginLeft: "10px" }}>Creating Service...</span>
+              </>
+            ) : (
+              <>
+                Create Service
+                <img src={golf} className='golf' />
+              </>
+            )}
+          </button>
           
      
       {errorMessage && <p className="error-box">{errorMessage}</p>}

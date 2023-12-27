@@ -19,6 +19,7 @@ import AdminUpload from "./pages/adminUpload/adminUpload"
 import MoreService from "./pages/moreService/moreService"
 import SearchResult from "./pages/searchResult/searchResult"
 import ThankYou from "./pages/thankYou/ThankYou"
+import Slider from "./components/slider/Slider"
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/create-admin" element={<AdminUpload/>} />
         <Route path="/more-service" element={<MoreService/>} />
         <Route path="/welcome" element={<ThankYou/>} />
+        <Route path="/slide" element={<Slider/>} />
         
         
       </Routes>

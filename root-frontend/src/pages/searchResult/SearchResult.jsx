@@ -1,4 +1,4 @@
-import React, {useEffect, useState }from 'react';
+import React, { useEffect, useState } from 'react';
 import './SearchResult.scss';
 import SpCard from '../../components/spCard/SpCard';
 import Footer from '../../components/footer/Footer';
@@ -6,8 +6,16 @@ import newRequest from '../../../utils/newRequest';
 import Header from '../../components/header/Header';
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
+import { css } from "@emotion/react";
+import { PacmanLoader } from "react-spinners";
 import Sorry from '../../components/sorry/Sorry';
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  margin-top: 3rem;
+  border-color: red;
+`;
 
 function SearchResult() {
   const location = useLocation();
@@ -31,10 +39,8 @@ function SearchResult() {
     fetchData();
   }, [search]);
 
-  console.log(data);
-
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <PacmanLoader color={"#36D7B7"} css={override} size={20} />;
   }
 
   if (error) {
@@ -48,7 +54,6 @@ function SearchResult() {
       <p className='subtitle-text'>Find your service</p>
 
       {data.length === 0 &&  <Sorry />} 
-   
 
       {data.map((service) => (
         <SpCard key={service._id} item={service} />
