@@ -31,10 +31,14 @@ function SpCard({ item }) {
       ) : (
         <>
  
+ <div className='sec1'>
+
+
  <Link className='link' to={`/view-profile/${item._id}`}>
 
     <img src={data?.profilePicture || spProfile} className='sp-profile-img'/>
 </Link> 
+</div>
 
     <div className='sp-card-text-contianer'>
       <div className='sp-title-contianer'>
@@ -54,16 +58,20 @@ function SpCard({ item }) {
       <p className='service-description'>{item.shortDesc}.</p>
     
       <div className='starting-price'>
-        <p className='starting-price-text'>Starting service price:</p>
+        <p className='starting-price-text'>Base fee:</p>
         <div className='price-container'>
           <small>₦ {item.price}</small>
-          {/* <strong>6,000</strong> */}
+         
         </div>
       </div>
     </div>
+
+    <div className='sec2'>
           <Link className='link' to={`/view-profile/${item._id}`}>
           <button className='view-profile'>View Profile</button>
           </Link>
+
+          </div>
           </>
              )}
     </div>

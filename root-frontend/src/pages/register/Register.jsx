@@ -64,7 +64,7 @@ function Register() {
       <Link className='home-logo' to='/'>
         <img src={logo} className='logo-1' alt='logo' />
       </Link>
-      <div className='sign-in-container'>
+      <div className='sign-in-container3'>
         <div className='sign-in-header'>Sign up</div>
         <p className='sign-up-now'>Sign up now to get started with an account</p>
 

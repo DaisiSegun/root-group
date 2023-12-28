@@ -69,9 +69,12 @@ function SignUpSp() {
 
   return (
     <div className='sign-in'>
-      <img src={logo} className='logo-1' alt='logo' />
 
-      <div className='sign-in-container'>
+      <Link className='link' to="/">
+      
+      <img src={logo} className='logo-1' alt='logo' />
+      </Link>
+      <div className='sign-in-containr'>
         <div className='sign-in-header'>Sign up</div>
         <p className='sign-up-now'>Sign up as a service provider</p>
 

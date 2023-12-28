@@ -57,7 +57,11 @@ function Home() {
       <Header showSearch={false} />
       <img className='home-img' src={homeImg} alt="Home" />
       <h1 className='header-32px'>Hire a Root Service Provider</h1>
+      <div className='search6'>
       <Search />
+
+      </div>
+      
       <h1 className='header-24px'>Root Services</h1>
 
       <div className='root-services-section'>

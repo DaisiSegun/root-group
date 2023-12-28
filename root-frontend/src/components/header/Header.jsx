@@ -40,7 +40,12 @@ function Header({ showSearch }) {
           <img className='root-logo' src={logo} alt='Root Logo' />
         </Link>
 
-        {showSearch && <Search />}
+        <div className="sectionBContainer">
+
+        {showSearch && <Search/>}
+
+        </div>
+        
 
         <div className='links'>
           {currentUser ? (

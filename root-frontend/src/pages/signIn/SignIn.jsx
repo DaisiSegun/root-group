@@ -51,7 +51,7 @@ function SignIn() {
       <Link className='home-logo' to='/'>
         <img src={logo} className='logo-1' alt='logo' />
       </Link>
-      <div className='sign-in-container'>
+      <div className='sign-in-container2'>
         <div className='sign-in-header'>Sign in</div>
 
         {error && <div className='error-box'>{error}</div>}

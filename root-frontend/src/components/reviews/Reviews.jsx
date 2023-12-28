@@ -33,6 +33,7 @@ function Reviews({ serviceId }) {
 
   return (
     <div className='review'>
+       <h2 className='a-r'>Reviews</h2>
       {isLoading
         ? "Loading"
         : error

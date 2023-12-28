@@ -16,6 +16,7 @@ import newRequest from '../../../utils/newRequest';
 import { Link, useParams } from 'react-router-dom';
 import getCurrentUser from '../../../utils/getCurrentUser.js';
 
+
 function SpProfile() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -91,22 +92,14 @@ function SpProfile() {
 
       <div className='main-section'>
         <div className='section-1'>
-          <div className='img-container'>
-            {/* {showNavigationButtons && (
-              <div onClick={() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? data.images.length - 1 : prevIndex - 1))} className='left-container'>
-                <img src={left} className='left-icon' alt='left' />
-              </div>
-            )} */}
-            <AwesomeSlider bullets={false} className='carousel' selected={currentIndex} onChange={setCurrentIndex}>
+          <div className='img-container5'>
+         
+            <AwesomeSlider   organicArrows={true}  bullets={true} className='carousel' selected={currentIndex} onChange={setCurrentIndex}>
               {data.images.map((image, index) => (
                 <div key={index} data-src={image} />
               ))}
             </AwesomeSlider>
-            {/* {showNavigationButtons && (
-              <div onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % data.images.length)} className='right-container'>
-                <img src={right} className='right-icon' alt='right' />
-              </div>
-            )} */}
+          
           </div>
 
           <div onClick={openWhatsApp} className='button1'>
@@ -115,7 +108,7 @@ function SpProfile() {
           </div>
           <h2 className='a-service'>About my service</h2>
           <p className='service-des'> {data.desc}</p>
-          <h2 className='a-service'>Reviews</h2>
+         
         </div>
 
      <div className='section-2'>
@@ -157,6 +150,7 @@ function SpProfile() {
           </div>
           
       </div>
+
 
 
       <Reviews serviceId={id} />

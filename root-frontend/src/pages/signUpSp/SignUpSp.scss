@@ -6,6 +6,7 @@
 }
  .link {
   text-decoration: none;
+  align-self: center;
  }
 
  .error-box {
@@ -28,7 +29,7 @@
       align-self: center;
     }
 
-    .sign-in-container {
+    .sign-in-containr {
       display: flex;
       flex-direction: column;
       align-self: center;
@@ -38,6 +39,15 @@
       box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
       padding: 2rem;
       width: 35%;
+
+      @media only screen and (max-width: 768px) {
+        width: 90%; // Adjusted width for mobile devices
+      }
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+        width: 70%;
+
+      }
 
         .sign-in-header{
           color: #000;
