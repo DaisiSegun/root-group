@@ -47,7 +47,7 @@ function CreateService() {
 
       setUploading(false);
       dispatch({ type: "ADD_IMAGES", payload: { images } });
-      setSuccessMessage("Images uploaded successfully, and service created!");
+      setSuccessMessage("Service Created! Please click on the Logo to go home");
       setErrorMessage(null);
     } catch (err) {
       console.log(err);
@@ -77,7 +77,7 @@ function CreateService() {
                   type="text"
                   name="title"
                   onChange={handleChange}
-                  placeholder='e.g iphone repair technicain, make up artist' className='create-input'/>
+                  placeholder='e.g iphone technicain, make up artist' className='create-input'/>
 
           </div>
 
@@ -106,6 +106,7 @@ function CreateService() {
               <option value="Personal Shopping & Errands">Personal Shopping & Errands</option>
               <option value="Carpentry">Carpentry</option>
               <option value="Research Project Assistant">Research Project Assistant</option>
+              <option value=" ">Catering</option>
 
           </select>
 
@@ -115,19 +116,19 @@ function CreateService() {
                 type="text"
                 name="desc"
                 onChange={handleChange}
-              placeholder='Please describe in details what your service is all about' className='create-input2'/>
+              placeholder='Share a detailed description of your service with all the relevant details.' className='create-input2'/>
 
           </div>
 
 
           
           <div className="create-contianer">
-              <p className='create-title'>Why are you unique? (Please in 1-2 sentences)</p>
+              <p className='create-title'>Service Location (Please it short)</p>
               <input
                 type="text"
                 name="shortDesc"
                 onChange={handleChange}
-              placeholder='e.g Capture your wedding beautifully with my stunning photos' className='create-input'/>
+              placeholder='e.g Ikeja, Lagos' className='create-input'/>
 
           </div>
 
@@ -137,7 +138,7 @@ function CreateService() {
                 type="number"
                 name="price"
                 onChange={handleChange}
-              placeholder='What is your minimum price for your service' className='create-input'/>
+              placeholder='The minimum fee for your service' className='create-input'/>
 
           </div>
           

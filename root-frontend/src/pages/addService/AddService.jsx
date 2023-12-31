@@ -9,10 +9,10 @@ import getCurrentUser from '../../../utils/getCurrentUser';
 import { Link } from 'react-router-dom';
 import newRequest from '../../../utils/newRequest';
 
-
 function AddService() {
   const currentUser = getCurrentUser();
   const [services, setServices] = useState([]);
+  const [reviewsData, setReviewsData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -21,6 +21,20 @@ function AddService() {
       try {
         const response = await newRequest.get(`/services/all?userId=${currentUser.user._id}`);
         setServices(response.data);
+
+        // Fetch reviews data for each service
+        const reviewsPromises = response.data.map((service) =>
+          newRequest.get(`/reviews/${service._id}`).then((res) => res.data)
+        );
+
+        const reviewsResults = await Promise.all(reviewsPromises);
+
+        const reviewsDataMap = {};
+        reviewsResults.forEach((reviews, index) => {
+          reviewsDataMap[response.data[index]._id] = reviews;
+        });
+
+        setReviewsData(reviewsDataMap);
       } catch (error) {
         setError('Error loading services.');
       } finally {
@@ -34,7 +48,7 @@ function AddService() {
   const handleDelete = async (serviceId) => {
     if (window.confirm('Are you sure you want to delete this service?')) {
       try {
-        await newRequest.delete(`/services/${serviceId}`); // Replace with your API endpoint
+        await newRequest.delete(`/services/${serviceId}`);
         setServices((prevServices) => prevServices.filter((service) => service._id !== serviceId));
       } catch (error) {
         console.error('Error deleting service:', error);
@@ -63,7 +77,7 @@ function AddService() {
         ) : error ? (
           'Error loading services.'
         ) : services.length === 0 ? (
-          <p className='error-message'>You have no services yet.</p>
+          <p className="error-message">You have no services yet.</p>
         ) : (
           <table>
             <thead>
@@ -83,7 +97,7 @@ function AddService() {
                   </td>
                   <td>{service.title}</td>
                   <td>{service.price}</td>
-                  <td>{service.sales}</td>
+                  <td>{reviewsData[service._id]?.length || 0}</td>
                   <td>
                     <img
                       className="delete"

@@ -62,7 +62,7 @@ function Home() {
 
       </div>
       
-      <h1 className='header-24px'>Root Services</h1>
+      <h1 className='header-24px'>Services on Root</h1>
 
       <div className='root-services-section'>
         <div className='cat-container'>

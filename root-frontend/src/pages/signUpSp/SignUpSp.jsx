@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import newRequest from "../../../utils/newRequest.js";
+import { CircleLoader } from "react-spinners";
+import { css } from "@emotion/react";
 
 
 function SignUpSp() {
@@ -23,6 +25,7 @@ function SignUpSp() {
   });
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -46,24 +49,32 @@ function SignUpSp() {
 
   const handleRegistration = async () => {
     try {
+      setLoading(true);
       const url = await upload(formData.profilePicture);
-      console.log('Cloudinary URL:', url); // Add this line to log the Cloudinary URL
+      console.log('Cloudinary URL:', url);
   
-      // Now, proceed with the axios.post request
-      await newRequest.post('/auth/register', {
+      // Make API call
+      const response = await newRequest.post('/auth/register', {
         ...formData,
         profilePictureUrl: url,
       });
   
       console.log('Registration successful');
+      
+      // Store user data in localStorage
+      localStorage.setItem("currentUser", JSON.stringify(response.data));
+  
       // Handle success, e.g., show a success message to the user
-      navigate('/');
+      navigate('/myservice');
     } catch (error) {
       console.error('Registration failed:', error);
-     
+  
       setError(error.response?.data?.error || 'Registration failed');
+    } finally {
+      setLoading(false);
     }
   };
+  
   
 
 
@@ -134,10 +145,10 @@ function SignUpSp() {
         </div>
 
         <div className='sign-in-box'>
-          <label className='sign-in-text'>Business Location</label>
+          <label className='sign-in-text'>Languages</label>
           <input
             className='sign-in-input'
-            placeholder='Business Location'
+            placeholder='e.g English, Igbo & Yoruba'
             name='businessLocation'
             onChange={handleChange}
           />
@@ -177,7 +188,11 @@ function SignUpSp() {
         {error && <div className='error-box'>{error}</div>}
 
         <div className='button3' onClick={handleRegistration}>
-          Register
+          {loading ? (
+            <CircleLoader color={"#36D7B7"} size={20} />
+          ) : (
+            'Register'
+          )}
         </div>
 
         <div className='dont-have-an'>

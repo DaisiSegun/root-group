@@ -18,7 +18,7 @@ function ThankYou() {
 
 
 
-    <h1 className='sorry-header'>Thank you for choosing Root, <p className='sorry-name'>  {currentUser.user.username} </p> < FavoriteIcon className='love' />  </h1>
+    <div className='sorry-con'>  <p className='sorry-header'>  Thank you for choosing Root</p> <div className='sorry-name'> <p> {currentUser.user.username}</p> < FavoriteIcon className='love' /></div>   </div>
     <img className='sryImg' src={welcome} />
 
     <Link className='link' to="/">

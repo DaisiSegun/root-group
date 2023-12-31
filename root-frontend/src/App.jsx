@@ -20,6 +20,7 @@ import MoreService from "./pages/moreService/moreService"
 import SearchResult from "./pages/searchResult/searchResult"
 import ThankYou from "./pages/thankYou/ThankYou"
 import Slider from "./components/slider/Slider"
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage"
 
 
 function App() {
@@ -36,13 +37,14 @@ function App() {
         <Route path="/findsp/:cats" element={<Sps/>} />
         <Route path="/search-result" element={<SearchResult/>} />
         <Route path="/view-profile/:id" element={<SpProfile/>} />
-        <Route path="/addservice" element={<AddService/>} />
+        <Route path="/myservice" element={<AddService/>} />
         <Route path="/createservice" element={<CreateService/>} />
         <Route path="/signup-sp" element={<SignUpSp/>} />
         <Route path="/create-admin" element={<AdminUpload/>} />
         <Route path="/more-service" element={<MoreService/>} />
         <Route path="/welcome" element={<ThankYou/>} />
         <Route path="/slide" element={<Slider/>} />
+        <Route path="/terms&condition" element={<TermsAndConditionsPage/>} />
         
         
       </Routes>

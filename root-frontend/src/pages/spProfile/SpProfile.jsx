@@ -15,6 +15,8 @@ import { useQuery } from '@tanstack/react-query';
 import newRequest from '../../../utils/newRequest';
 import { Link, useParams } from 'react-router-dom';
 import getCurrentUser from '../../../utils/getCurrentUser.js';
+import SwipeIcon from '@mui/icons-material/Swipe';
+import swipeImg from '../../images/swipe.svg'
 
 
 function SpProfile() {
@@ -40,6 +42,14 @@ function SpProfile() {
           return res.data;
         }),
       enabled: !!userId,
+    });
+
+    const { isLoading: isLoadingReviews, error: errorReviews, data: reviewsData } = useQuery({
+      queryKey: ["reviews"],
+      queryFn: () =>
+        newRequest.get(`/reviews/${id}`).then((res) => {
+          return res.data;
+        }),
     });
 
   if (isLoading || isLoadingUser) {
@@ -86,7 +96,7 @@ function SpProfile() {
             {!isNaN(data.totalStars / data.starNumber) &&
               Math.round(data.totalStars / data.starNumber)}
           </p>
-          <p className='num-job-done'>({data.sales})</p>
+          <p className='num-job-done'>({reviewsData.length})</p>
         </div>
       </div>
 
@@ -97,11 +107,22 @@ function SpProfile() {
             <AwesomeSlider   organicArrows={true}  bullets={true} className='carousel' selected={currentIndex} onChange={setCurrentIndex}>
               {data.images.map((image, index) => (
                 <div key={index} data-src={image} />
+                
               ))}
+             
             </AwesomeSlider>
+
+            <div className='swipe'>
+
+            <p className='swipe-text'>Swipe image</p>
+            <img className='swipe-img' src={swipeImg}/>
+            
+            </div>
+
+           
           
           </div>
-
+                
           <div onClick={openWhatsApp} className='button1'>
             Request a Quote
             <img src={golf} className='golf' />
@@ -116,7 +137,7 @@ function SpProfile() {
              <div className='sp-info'>
              <div className='sp-des'>
                  <p className='light-des'>My location</p>
-                 <p className='dark-des'>{dataUser.businessLocation}</p>
+                 <p className='dark-des'>{data.shortDesc}</p>
                </div> 
                <div className='sp-des'>
                  <p className='light-des'>Interests</p>
@@ -124,7 +145,7 @@ function SpProfile() {
                </div>   
                <div className='sp-des'>
                  <p className='light-des'>Languages</p>
-                 <p className='dark-des'>{dataUser.languages}</p>
+                 <p className='dark-des'>{dataUser.businessLocation}</p>
                </div> 
                <div className='sp-des'>
                  <p className='light-des'>Certifications</p>

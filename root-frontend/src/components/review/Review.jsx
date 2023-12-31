@@ -25,6 +25,8 @@ console.log(data)
   }
 
   return (
+
+    <div className='rev-con'>
     <div className='reviews'>
       {data ? (
         <div className='review-title-container'>
@@ -43,6 +45,9 @@ console.log(data)
 
     
     </div>
+
+
+</div>
   );
 }
 

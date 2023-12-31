@@ -3,8 +3,9 @@ import Review from "../models/review.model.js";
 import Service from "../models/sp.model.js";
 
 export const createReview = async (req, res, next) => {
-  if (req.isSeller)
-    return next(createError(403, "SP can't create a review!"));
+  // Check if the user is a seller and if they are trying to review their own service
+  if (req.isSeller && req.body.userId === req.userId)
+    return next(createError(403, "Sellers cannot review their own services!"));
 
   const newReview = new Review({
     userId: req.userId,
@@ -14,17 +15,7 @@ export const createReview = async (req, res, next) => {
   });
 
   try {
-    const review = await Review.findOne({
-      serviceId: req.body.serviceId,
-      userId: req.userId,
-    });
-
-    if (review)
-      return next(
-        createError(403, "You have already created a review for this Service!")
-      );
-
-    //TODO: check if the user purchased the gig.
+    // TODO: You can add logic here to check if the user has purchased the service
 
     const savedReview = await newReview.save();
 
@@ -36,6 +27,7 @@ export const createReview = async (req, res, next) => {
     next(err);
   }
 };
+
 
 export const getReviews = async (req, res, next) => {
   try {

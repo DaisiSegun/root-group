@@ -4,7 +4,7 @@ import logo from '../../images/rootlogo.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
-import { PacmanLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
 import newRequest from "../../../utils/newRequest.js";
 
 const override = css`
@@ -36,10 +36,10 @@ function SignIn() {
       setLoading(true);
       const response = await newRequest.post('/auth/login', formData);
       localStorage.setItem("currentUser", JSON.stringify(response.data));
-      console.log('Login successful:', response.data);
+     
       navigate("/");
     } catch (error) {
-      console.log('Login failed:', error.response.data);
+   
       setError('Invalid username or password');
     } finally {
       setLoading(false);
@@ -79,7 +79,7 @@ function SignIn() {
 
         <div className='button3' onClick={handleLogin}>
           {loading ? (
-            <PacmanLoader color={"#36D7B7"} css={override} size={20} />
+            <CircleLoader color={"#36D7B7"} css={override} size={20} />
           ) : (
             'Login'
           )}

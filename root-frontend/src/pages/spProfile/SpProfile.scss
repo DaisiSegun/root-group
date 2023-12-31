@@ -5,6 +5,31 @@
   box-sizing: border-box;
   font-family: 'Open Sans';
 }
+.swipe {
+  display: none;
+  border-radius: 1.25rem;
+  background: var(--light-dark-blue, #F2F2F2);
+  align-items: center;
+  margin-top: -1.5rem;
+  width: max-content;
+  padding: 0.625rem;
+  gap: 0.25rem;
+
+  .swipe-text {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 200% */
+  }
+
+  .swipe-img {
+    width: 0.84375rem;
+    height: 0.86806rem;
+  }
+ 
+}
 
 .carousel {
   width: 41rem;
@@ -322,9 +347,39 @@
 
 
 
-@media screen and (max-width: 900px) { 
+@media screen and (max-width: 1000px) { 
 
-  
+  /* SpProfileCustomStyles.scss */
+
+/* SpProfileCustomStyles.scss */
+
+
+.swipe {
+  display: flex;
+  border-radius: 1.25rem;
+  background: var(--light-dark-blue, #F2F2F2);
+  align-items: center;
+  margin-top: -1.5rem;
+  width: max-content;
+  padding: 0.625rem;
+  gap: 0.25rem;
+
+  .swipe-text {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 200% */
+  }
+
+  .swipe-img {
+    width: 0.84375rem;
+    height: 0.86806rem;
+  }
+ 
+}
+
 
 * {
   margin: 0;
@@ -480,7 +535,7 @@
           margin-left: 1rem;
           color: white;
           cursor: pointer;
-          width: 50%;
+          width: 80%;
           transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
           &:hover {
             background-color: #0C1E30; /* Change the background color on hover */

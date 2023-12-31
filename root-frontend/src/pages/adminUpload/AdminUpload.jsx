@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import newRequest from '../../../utils/newRequest.js';
+import { CircleLoader } from 'react-spinners';
 
 function AdminUpload() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function AdminUpload() {
     id: '', // Add an 'id' field
   });
 
+  const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -42,6 +44,7 @@ function AdminUpload() {
 
   const handleRegistration = async () => {
     try {
+      setLoading(true);
       const url = await upload(formData.image);
       console.log('Cloudinary URL:', url);
 
@@ -59,6 +62,8 @@ function AdminUpload() {
 
       setError(error.response?.data?.error || 'Upload failed');
       setSuccessMessage('');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,7 +74,6 @@ function AdminUpload() {
       <div className='sign-in-container'>
         <div className='sign-in-header'>Create Category</div>
         <p className='sign-up-now'>Add Categories</p>
-
 
         <div className='sign-in-box'>
           <label className='sign-in-text'>ID</label>
@@ -121,15 +125,17 @@ function AdminUpload() {
             onChange={handleImageChange}
           />
         </div>
-    
+
         {error && <div className='error-box'>{error}</div>}
         {successMessage && <div className='success-box'>{successMessage}</div>}
 
         <div className='button3' onClick={handleRegistration}>
-          Create 
+          {loading ? (
+            <CircleLoader color='#ffffff' size={20} />
+          ) : (
+            'Create'
+          )}
         </div>
-
-       
       </div>
     </div>
   );
