@@ -9,6 +9,10 @@
   align-self: center;
  }
 
+ hr{
+
+  margin-top: 1rem;
+ }
  .error-box {
   background-color: #f8d7da;
   color: #721c24;
@@ -17,6 +21,25 @@
   margin-bottom: 10px;
   margin-top: 1rem;
 }
+.agree-checkbox:checked + .agree-label {
+  /* Styles for the label when the checkbox is checked */
+  color: #2ecc71; /* Change the color to your preferred color */
+  font-weight: bold;
+}
+
+.agree-checkbox:not(:checked) + .agree-label {
+  /* Styles for the label when the checkbox is not checked */
+  color: #555; /* Change the color to your preferred color */
+  font-weight: normal;
+}
+
+.agree-label {
+  /* Styles for the label */
+  font-size: 0.8em; /* Adjust the font size to make it very small */
+  margin-top: 0.75rem;
+}
+
+
 .sign-in{
   display: flex;
   flex-direction: column;

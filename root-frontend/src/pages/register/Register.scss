@@ -8,6 +8,24 @@
 .link {
   text-decoration: none;
 }
+
+.agree-checkbox:checked + .agree-label {
+  /* Styles for the label when the checkbox is checked */
+  color: #2ecc71; /* Change the color to your preferred color */
+  font-weight: bold;
+}
+
+.agree-checkbox:not(:checked) + .agree-label {
+  /* Styles for the label when the checkbox is not checked */
+  color: #555; /* Change the color to your preferred color */
+  font-weight: normal;
+}
+
+.agree-label {
+  /* Styles for the label */
+  font-size: 0.8em; /* Adjust the font size to make it very small */
+}
+
 .error-box {
   background-color: #f8d7da;
   color: #721c24;

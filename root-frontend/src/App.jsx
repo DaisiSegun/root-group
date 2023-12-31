@@ -44,7 +44,7 @@ function App() {
         <Route path="/more-service" element={<MoreService/>} />
         <Route path="/welcome" element={<ThankYou/>} />
         <Route path="/slide" element={<Slider/>} />
-        <Route path="/terms&condition" element={<TermsAndConditionsPage/>} />
+        <Route path="/terms&conditions" element={<TermsAndConditionsPage/>} />
         
         
       </Routes>

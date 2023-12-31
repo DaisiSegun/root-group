@@ -125,6 +125,12 @@ function Register() {
 
         {error && <div className='error-box'>{error}</div>}
 
+
+        <label htmlFor="agreeToTermsCheckbox" className="agree-label">
+          By signing up, you have agreed to the{' '}
+          <Link to="/terms&conditions">terms and conditions</Link>.
+        </label>
+
         <div className='button3' onClick={handleRegistration}>
           {loading ? (
             <CircleLoader color={"#36D7B7"} css={override} size={20} />
