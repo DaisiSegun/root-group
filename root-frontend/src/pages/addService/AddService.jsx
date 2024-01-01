@@ -104,7 +104,10 @@ function AddService() {
                       src={deleteService}
                       alt="Delete"
                       onClick={() => handleDelete(service._id)}
+
+
                     />
+                    <p>Delete Service</p>
                   </td>
                 </tr>
               ))}

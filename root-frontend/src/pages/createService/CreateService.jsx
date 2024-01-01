@@ -112,18 +112,19 @@ function CreateService() {
 
           <div className="create-contianer">
               <p className='create-title'> About your Company/Brand (Describe your service)</p>
-              <input 
+              <textarea
                 type="text"
                 name="desc"
+                style={{ height: '200px' }} 
                 onChange={handleChange}
-              placeholder='Share a detailed description of your service with all the relevant details.' className='create-input2'/>
+              placeholder='Please share a detailed description with all the relevant details.' className='create-input2'/>
 
           </div>
 
 
           
           <div className="create-contianer">
-              <p className='create-title'>Service Location (Please it short)</p>
+              <p className='create-title'>Service Location (Please make it short)</p>
               <input
                 type="text"
                 name="shortDesc"

@@ -71,8 +71,11 @@ function SpCard({ item }) {
               <button className='view-profile'>View Profile</button>
             </Link>
           </div>
+        
         </>
       )}
+
+    
     </div>
   );
 }

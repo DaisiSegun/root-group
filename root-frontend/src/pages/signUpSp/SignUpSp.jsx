@@ -165,7 +165,7 @@ function SignUpSp() {
         </div>
 
         <div className='sign-in-box'>
-          <label className='sign-in-text'>Languages</label>
+          <label className='sign-in-text'>Location</label>
           <input
             className='sign-in-input'
             placeholder='Languages'

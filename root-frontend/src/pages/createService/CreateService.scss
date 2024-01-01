@@ -119,8 +119,22 @@
                   height: max-content;
                   /* Elevation 1 */
                   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+                  vertical-align: top; /* Align text to the top */
+                  box-sizing: border-box;
+              
 
                  padding: 1.5rem;
+
+                 &:focus {
+                  outline: none; // Remove the default focus outline if you don't want it
+                  border: 2px solid #3498db; // Add a border when the input is in focus
+                  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); // Add a box shadow when the input is in focus
+                  line-height: normal; 
+                  vertical-align: top;
+                  
+                 
+                }
+
                 }
           }
          }     
