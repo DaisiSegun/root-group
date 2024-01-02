@@ -86,9 +86,9 @@ function SignIn() {
         </div>
 
         <div className='dont-have-an'>
-          Don't have an account?
+          Don't have an account? 
           <Link className='link' to='/register'>
-            <span className='sign-up-green'>Sign up</span>
+            <span className='sign-up-green'> Sign up</span>
           </Link>
         </div>
       </div>

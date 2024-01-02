@@ -142,7 +142,7 @@ function Register() {
         <div className='dont-have-an'>
           Already have an account?
           <Link to='/sign-in' className='link'>
-            <span className='sign-up-green'>Sign in</span>
+            <span className='sign-up-green'> Sign in</span>
           </Link>
         </div>
       </div>
