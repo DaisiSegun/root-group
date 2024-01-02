@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignUpSp.scss';
 import upload from "../../../utils/upload";
-import logo from '../../images/rootlogo.png';
+import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

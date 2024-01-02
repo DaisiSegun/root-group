@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 import Header from '../../components/header/Header';
-import homeImg from '../../images/home-img.png';
+import homeImg from '../../images/home.svg';
 import Search from '../../components/search/Search';
 import CatCard from '../../components/CatCard/CatCard';
 import loadMore from '../../images/load-more.svg';
@@ -56,7 +56,7 @@ function Home() {
     <div className='home'>
       <Header showSearch={false} />
       <img className='home-img' src={homeImg} alt="Home" />
-      <h1 className='header-32px'>Hire a Service Provider</h1>
+      <h1 className='header-32px'>Hire a Service Provider in Lagos</h1>
       <div className='search6'>
       <Search />
 

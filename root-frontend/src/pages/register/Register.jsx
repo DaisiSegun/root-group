@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Register.scss';
-import logo from '../../images/rootlogo.png';
+import logo from '../../images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { css } from "@emotion/react";
 import {CircleLoader} from "react-spinners";

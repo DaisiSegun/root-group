@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SignIn.scss';
-import logo from '../../images/rootlogo.png';
+import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
@@ -57,10 +57,10 @@ function SignIn() {
         {error && <div className='error-box'>{error}</div>}
 
         <div className='sign-in-box'>
-          <label className='sign-in-text'>Username</label>
+          <label className='sign-in-text'>Email</label>
           <input
             className='sign-in-input'
-            placeholder='Username'
+            placeholder='Email'
             name='email'
             onChange={handleChange}
           />

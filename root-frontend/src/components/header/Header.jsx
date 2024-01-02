@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import logo from '../../images/rootlogo.png';
+import logo from '../../images/logo.svg';
 import Search from '../search/Search';
 import { Link , useNavigate } from 'react-router-dom';
 import getCurrentUser from '../../../utils/getCurrentUser.js';

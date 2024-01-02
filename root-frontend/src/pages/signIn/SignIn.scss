@@ -145,6 +145,8 @@
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    width: 80%;
+    
   }
   
   .home-logo {
@@ -159,8 +161,10 @@
       .logo-1 {
       
         margin-top: 3rem;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
         align-self: center;
+        width: 4.5rem;
+        height: 1.1875rem;
       }
   
       .sign-in-container2 {
@@ -172,13 +176,14 @@
         background: #FFF;
         box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
         padding: 1rem;
-        width: 70%;
+        width: 90%;
+        height: 70vh;
         
   
           .sign-in-header{
             color: #000;
             font-family: Open Sans;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-style: normal;
             font-weight: 400;
             line-height: 1.5rem; /* 133.333% */
@@ -194,7 +199,7 @@
               .sign-in-text{
                 color: rgba(0, 0, 0, 0.70);
                 font-family: Open Sans;
-                font-size: 1rem;
+                font-size: 0.85rem;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 1.5rem; /* 150% */
@@ -220,7 +225,7 @@
            background: var(--dark-blue, #0F253B);
            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
            margin-top: 2rem;
-           margin-bottom: 0.5rem;
+           margin-bottom: 1rem;
            color: white;
            cursor: pointer;
            width: 100%;

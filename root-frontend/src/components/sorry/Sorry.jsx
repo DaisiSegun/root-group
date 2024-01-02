@@ -19,7 +19,7 @@ function Sorry() {
 
     <div className='sorry-container'>
         <h1 className='sorry-header'>We are sorry this service is not available yet</h1>
-        <p className='sorry-text'>Regardless, feel free to contact us, and we'll go the extra mile to find this service provider for you</p>
+        <p className='sorry-text'>Regardless, please feel free to contact us, and we'll go the extra mile to find this service provider from out network for you</p>
         <button onClick={openWhatsApp} className='sorry-button'>Contact us</button>
         <img className='sryyImg' src={sorrtImg} />
 
