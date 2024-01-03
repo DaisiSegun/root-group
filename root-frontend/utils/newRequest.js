@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "https://api.roothq.africa",
+  baseURL: "https://busy-rose-nematode-sari.cyclic.app/api/",
   withCredentials: true,
 });
 
