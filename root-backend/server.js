@@ -29,7 +29,8 @@ const connect = async () => {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: "https://busy-rose-nematode-sari.cyclic.app/", credentials: true }));
+app.use(cors({ origin: "https://busy-rose-nematode-sari.cyclic.app", credentials: true }));
+
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
