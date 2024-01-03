@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "https://busy-rose-nematode-sari.cyclic.app/api/",
+  baseURL: "/api/", // Update to match the path configured in your Vite proxy
   withCredentials: true,
 });
 
