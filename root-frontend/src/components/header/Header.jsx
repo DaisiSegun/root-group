@@ -31,7 +31,7 @@ function Header({ showSearch }) {
     }
   };
   const currentUser = getCurrentUser();
-  console.log(currentUser)
+  
 
   return (
     <div className='header'>

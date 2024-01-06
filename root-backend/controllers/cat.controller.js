@@ -1,7 +1,7 @@
-import Cat from "../models/cat.model.js";
-import createError from "../utils/createError.js";
+const Cat = require("../models/cat.model.js");
+const createError = require("../utils/createError.js");
 
-export const createCat = async (req, res, next) => {
+const createCat = async (req, res, next) => {
   try {
     const { title, desc, category, imageUrl, id } = req.body;
 
@@ -26,7 +26,7 @@ export const createCat = async (req, res, next) => {
   }
 };
 
-export const getAllCats = async (req, res, next) => {
+const getAllCats = async (req, res, next) => {
   try {
     // Retrieve all cats from the database
     const cats = await Cat.find();
@@ -40,7 +40,7 @@ export const getAllCats = async (req, res, next) => {
   }
 };
 
-export const getCatById = async (req, res, next) => {
+const getCatById = async (req, res, next) => {
   const catId = req.params.id;
 
   try {
@@ -60,4 +60,4 @@ export const getCatById = async (req, res, next) => {
   }
 };
 
-// You can create additional controller methods as needed, such as getCatById, updateCat, deleteCat, etc.
+module.exports = { createCat, getAllCats, getCatById };

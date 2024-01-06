@@ -47,7 +47,9 @@
         font-size: 1rem;
         background: var(--light-dark-blue, #F2F2F2);
         color: var(--dark-blue, #0F253B);
-        border: none;
+        border-style: solid;
+        border-color: #0F253B;
+       border-width: 1px;
         cursor: pointer;
         outline: none;
         border-radius: 5px;
@@ -62,6 +64,7 @@
           background-color: #bdc3c7;
           cursor: not-allowed;
           color: white;
+          border: none;
         }
       }
   

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Register.scss';
 import logo from '../../images/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,6 +13,10 @@ const override = css`
 `;
 
 function Register() {
+
+  useEffect(() => {
+    document.title = 'Register';
+  }, []);
   const [formData, setFormData] = useState({
     username: '',
     email: '',

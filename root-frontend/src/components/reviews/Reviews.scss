@@ -133,10 +133,15 @@
 }
 
 /* Optional: Add styles to make the form look visually appealing */
-.create-review {
+.create-review5 {
   background-color: #f9f9f9;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1.2rem;
+  width: 50%;
+  
 }
 
 .input-review:focus,
@@ -216,7 +221,7 @@
     display: flex;
     flex-direction: column;
   
-    
+    align-items: ce;
   
   }
   .no-reviews-text {
@@ -284,10 +289,15 @@
   }
   
   /* Optional: Add styles to make the form look visually appealing */
-  .create-review {
+  .create-review5 {
     background-color: #f9f9f9;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.2rem;
+    width: 91%;
+    
   }
   
   .input-review:focus,

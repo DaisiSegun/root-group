@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ReviewSchema = new Schema(
@@ -14,7 +14,7 @@ const ReviewSchema = new Schema(
     star: {
       type: Number,
       required: true,
-      enum:[1,2,3,4,5]
+      enum: [1, 2, 3, 4, 5],
     },
     desc: {
       type: String,
@@ -26,4 +26,4 @@ const ReviewSchema = new Schema(
   }
 );
 
-export default mongoose.model("Review", ReviewSchema);
+module.exports = mongoose.model("Review", ReviewSchema);

@@ -1,9 +1,9 @@
-import User from "../models/user.model.js";
-import Crypto from "crypto-js";
-import jwt from "jsonwebtoken";
-import createError from "../utils/createError.js";
+const User = require("../models/user.model.js");
+const Crypto = require("crypto-js");
+const jwt = require("jsonwebtoken");
+const createError = require("../utils/createError.js");
 
-export const register = async (req, res, next) => {
+const register = async (req, res, next) => {
   try {
     const {
       username,
@@ -15,7 +15,7 @@ export const register = async (req, res, next) => {
       adminType,
       businessLocation,
       interests,
-      profilePictureUrl 
+      profilePictureUrl
     } = req.body;
 
     // Check if password and confirm password match
@@ -36,7 +36,7 @@ export const register = async (req, res, next) => {
       confirmPassword: Crypto.AES.encrypt(req.body.password, process.env.PASSWORD).toString(),
       phone,
       isSeller: userType === 'seller',
-      isAdmin:  adminType === 'yes',
+      isAdmin: adminType === 'yes',
       businessLocation,
       interests,
       profilePicture: profilePictureUrl,
@@ -69,8 +69,7 @@ export const register = async (req, res, next) => {
   }
 };
 
-
-export const login = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -97,20 +96,20 @@ export const login = async (req, res, next) => {
 
     const { password, ...info } = user._doc;
     res
-    .cookie("accessToken", token, {
-      httpOnly: true,
-    })
-    .status(200)
-    .json({
-      message: "Login successful!",
-      user: info,
-    });
-} catch (err) {
-  next(err);
-}
+      .cookie("accessToken", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json({
+        message: "Login successful!",
+        user: info,
+      });
+  } catch (err) {
+    next(err);
+  }
 };
 
-export const logout = async (req, res) => {
+const logout = async (req, res) => {
   res
     .clearCookie("accessToken", {
       sameSite: "none",
@@ -119,3 +118,5 @@ export const logout = async (req, res) => {
     .status(200)
     .send("User has been logged out.");
 };
+
+module.exports = { register, login, logout };

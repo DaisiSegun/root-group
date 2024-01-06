@@ -1,15 +1,11 @@
-import express from "express";
-import { verifyToken } from "../middleware/jwt.js";
-import {
-  createReview,
-  getReviews,
-  deleteReview,
-} from "../controllers/review.controller.js";
+const express = require('express');
+const jwtMiddleware = require('../middleware/jwt.js');
+const reviewController = require('../controllers/review.controller.js');
 
 const router = express.Router();
 
-router.post("/", verifyToken, createReview )
-router.get("/:serviceId", getReviews )
-router.delete("/:id", deleteReview)
+router.post("/", jwtMiddleware.verifyToken, reviewController.createReview);
+router.get("/:serviceId", reviewController.getReviews);
+router.delete("/:id", reviewController.deleteReview);
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import User from "../models/user.model.js";
-import createError from "../utils/createError.js";
+const User = require("../models/user.model.js");
+const createError = require("../utils/createError.js");
 
-export const deleteUser = async (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   if (req.userId !== user._id.toString()) {
@@ -11,9 +11,8 @@ export const deleteUser = async (req, res, next) => {
   res.status(200).send("deleted.");
 };
 
-export const getUser = async (req, res, next) => {
+exports.getUser = async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
   res.status(200).send(user);
 };
-

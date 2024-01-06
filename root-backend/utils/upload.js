@@ -1,6 +1,5 @@
-// upload.js
-import cloudinary from 'cloudinary';
-import dotenv from 'dotenv';
+const cloudinary = require('cloudinary').v2;
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -23,4 +22,4 @@ const upload = async (file) => {
   }
 };
 
-export default upload;
+module.exports = upload;

@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 import newRequest from '../../../utils/newRequest';
 
 function AddService() {
+  useEffect(() => {
+    document.title = 'My Service';
+  }, []);
   const currentUser = getCurrentUser();
   const [services, setServices] = useState([]);
   const [reviewsData, setReviewsData] = useState({});

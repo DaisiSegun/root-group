@@ -23,6 +23,9 @@ const override = css`
 `;
 
 function Home() {
+  useEffect(() => {
+    document.title = 'Root';
+  }, []);
   const [catData, setCatData] = useState([]);
   const [loading, setLoading] = useState(true); // Added loading state
   const navigate = useNavigate();

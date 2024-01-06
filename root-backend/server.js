@@ -1,13 +1,13 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from 'dotenv'
-import userRoute from './routes/user.route.js'
-import authRoute from './routes/auth.route.js'
-import spRoute from './routes/sp.route.js'
-import catRoute from './routes/cat.route.js'
-import cookieParser from "cookie-parser"
-import reviewRoute from './routes/review.route.js'
-import cors from "cors";
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+const userRoute = require('./routes/user.route.js');
+const authRoute = require('./routes/auth.route.js');
+const spRoute = require('./routes/sp.route.js');
+const catRoute = require('./routes/cat.route.js');
+const cookieParser = require("cookie-parser");
+const reviewRoute = require('./routes/review.route.js');
+const cors = require("cors");
 
 const app = express();
 dotenv.config();
@@ -29,7 +29,11 @@ const connect = async () => {
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: "https://roothq.africa", credentials: true }));
+app.use(cors({
+  origin: ["http://localhost:5173", "https://roothq.africa"],
+  credentials: true,
+}));
+
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);

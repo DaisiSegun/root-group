@@ -347,7 +347,7 @@
 
 
 
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1024px) { 
 
   /* SpProfileCustomStyles.scss */
 
@@ -359,10 +359,11 @@
   border-radius: 1.25rem;
   background: var(--light-dark-blue, #F2F2F2);
   align-items: center;
-  margin-top: -1.5rem;
+  margin-top: 1.55rem;
   width: max-content;
-  padding: 0.625rem;
+  padding: 0.35rem;
   gap: 0.25rem;
+  
 
   .swipe-text {
     color: #000;
@@ -376,6 +377,7 @@
   .swipe-img {
     width: 0.84375rem;
     height: 0.86806rem;
+    
   }
  
 }
@@ -404,11 +406,11 @@
 
 
   @media only screen and (max-width: 768px) {
-    width: 100%; // Adjust the width for tablet size
+    width: 95%; // Adjust the width for tablet size
   }
 
   @media only screen and (max-width: 480px) {
-    width: 100%; // Adjust the width for mobile size
+    width: 95%; // Adjust the width for mobile size
   }
 
 }
@@ -428,7 +430,7 @@
   }
 
   @media only screen and (max-width: 480px) {
-    width: 100%; // Adjust the width for mobile size
+    width: 80%; // Adjust the width for mobile size
   }
 }
 
@@ -573,6 +575,7 @@
           line-height: 1.5rem; /* 150% */
           margin-top: 0.25rem;
           margin-left: 1rem;
+          margin-right: 1rem;
           max-width:100%;
         }
     }

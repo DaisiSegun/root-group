@@ -1,7 +1,7 @@
-import Service from "../models/sp.model.js";
-import createError from "../utils/createError.js";
+const Service = require("../models/sp.model.js");
+const createError = require("../utils/createError.js");
 
-export const createService = async (req, res, next) => {
+const createService = async (req, res, next) => {
   if (!req.isSeller)
     return next(createError(403, "Only a SP can create a Service!"));
 
@@ -17,7 +17,8 @@ export const createService = async (req, res, next) => {
     next(err);
   }
 };
-export const deleteService = async (req, res, next) => {
+
+const deleteService = async (req, res, next) => {
   try {
     const service = await Service.findById(req.params.id);
     if (service.userId !== req.userId)
@@ -29,7 +30,8 @@ export const deleteService = async (req, res, next) => {
     next(err);
   }
 };
-export const getService = async (req, res, next) => {
+
+const getService = async (req, res, next) => {
   try {
     const service = await Service.findById(req.params.id);
     if (!service) next(createError(404, "Service not found!"));
@@ -38,7 +40,8 @@ export const getService = async (req, res, next) => {
     next(err);
   }
 };
-export const getServices = async (req, res, next) => {
+
+const getServices = async (req, res, next) => {
   const q = req.query;
   const filters = {
     ...(q.userId && { userId: q.userId }),
@@ -63,3 +66,5 @@ export const getServices = async (req, res, next) => {
     next(err);
   }
 };
+
+module.exports = { createService, deleteService, getService, getServices };

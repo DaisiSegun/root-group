@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import getCurrentUser from '../../../utils/getCurrentUser'
 import welcome from '../../images/welcome.gif'
 import { Link } from 'react-router-dom';
@@ -8,6 +8,9 @@ import './ThankYou.scss'
 import Slider from '../../components/slider/Slider';
 function ThankYou() {
 
+  useEffect(() => {
+    document.title = 'Welcome';
+  }, []);
   const currentUser = getCurrentUser();
 
   return (

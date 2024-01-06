@@ -4,20 +4,22 @@ import SpCard from '../../components/spCard/SpCard';
 import Footer from '../../components/footer/Footer';
 import newRequest from '../../../utils/newRequest';
 import Header from '../../components/header/Header';
-import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
 import { css } from "@emotion/react";
-import { PacmanLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 import Sorry from '../../components/sorry/Sorry';
 
 const override = css`
-  display: block;
-  margin: 0 auto;
-  margin-top: 3rem;
-  border-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use 100vh to make it full height */
 `;
 
 function SearchResult() {
+  useEffect(() => {
+    document.title = 'Search Result';
+  }, []);
   const location = useLocation();
   const search = new URLSearchParams(location.search).get('search');
   const [data, setData] = useState([]);
@@ -40,7 +42,7 @@ function SearchResult() {
   }, [search]);
 
   if (isLoading) {
-    return <PacmanLoader color={"#36D7B7"} css={override} size={20} />;
+    return <ClipLoader color={"#36D7B7"} css={override} size={150} />;
   }
 
   if (error) {
@@ -59,6 +61,7 @@ function SearchResult() {
         <SpCard key={service._id} item={service} />
       ))}
 
+      <div className='space25'></div>
       <Footer />
     </div>
   );

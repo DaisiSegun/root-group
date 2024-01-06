@@ -1,32 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import { css } from '@emotion/react';
+import { ClipLoader } from 'react-spinners';
 import Header from '../../components/header/Header';
 import newRequest from '../../../utils/newRequest';
 import CatCard from '../../components/CatCard/CatCard';
 import './MoreService.scss';
 
 function MoreService() {
+  useEffect(() => {
+    document.title = 'More Services';
+  }, []);
   const [catData, setCatData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 8;
+  const [loading, setLoading] = useState(true);
+  const itemsPerPage = 12; // Change this based on your preference
+  const matchingCatData = catData; // Assuming all catData items should be displayed
 
   useEffect(() => {
-    // Fetch category data from the backend when the component mounts
-    newRequest
-      .get(`/cat/all?page=${currentPage}&limit=${cardsPerPage}`)
-      .then((response) => {
+    setLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await newRequest.get(`/cat/all`);
         setCatData(response.data.cats);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching category data:', error);
-      });
-  }, [currentPage]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = currentPage * itemsPerPage;
+  const catDataToDisplay = matchingCatData.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    if (endIndex < matchingCatData.length) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
@@ -37,17 +56,19 @@ function MoreService() {
 
       <div className='root-services-section'>
         <div className='cat-container'>
-          {/* Display CatCard components with data from the backend */}
-          {catData.map((cat) => (
-            <CatCard key={cat.category} categoryId={cat._id} />
-          ))}
+          {loading ? (
+            <ClipLoader color='#36D7B7' loading={loading} size={150} />
+          ) : (
+            catDataToDisplay.map((cat) => (
+              <CatCard key={cat.category} categoryId={cat._id} />
+            ))
+          )}
         </div>
 
-        {/* Show Next and Previous buttons */}
         <div className='pagination-buttons'>
           <button
             className='previous-button'
-            onClick={handlePrevPage}
+            onClick={handlePreviousPage}
             disabled={currentPage === 1}
           >
             Previous
@@ -55,7 +76,7 @@ function MoreService() {
           <button
             className='next-button'
             onClick={handleNextPage}
-            disabled={catData.length < cardsPerPage}
+            disabled={endIndex >= matchingCatData.length}
           >
             Next
           </button>

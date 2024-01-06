@@ -1,12 +1,10 @@
-import express from "express"
-import { deleteUser, getUser, } from "../controllers/user.controller.js";
-import { verifyToken } from "../middleware/jwt.js";
+const express = require('express');
+const userController = require('../controllers/user.controller.js');
+const jwtMiddleware = require('../middleware/jwt.js');
 
 const router = express.Router();
 
-router.delete("/:id", verifyToken, deleteUser);
-router.get("/:id", getUser);
-  
+router.delete("/:id", jwtMiddleware.verifyToken, userController.deleteUser);
+router.get("/:id", userController.getUser);
 
-
-export default router;
+module.exports = router;

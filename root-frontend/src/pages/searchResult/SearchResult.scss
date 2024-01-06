@@ -5,6 +5,9 @@
   box-sizing: border-box;
   font-family: 'Open Sans';
 }
+.space25 {
+  margin-bottom: 4rem;
+}
 
 .sps {
   display: flex;
@@ -52,6 +55,9 @@
     font-family: 'Open Sans';
   }
   
+  .space25 {
+    margin-bottom: 4rem;
+  }
   .sps {
     display: flex;
     flex-direction: column;

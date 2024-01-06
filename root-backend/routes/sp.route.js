@@ -1,17 +1,12 @@
-import express from "express";
-import {
-  createService,
-  deleteService,
-  getService,
-  getServices
-} from "../controllers/sp.controller.js";
-import { verifyToken } from "../middleware/jwt.js";
+const express = require('express');
+const spController = require('../controllers/sp.controller.js');
+const jwtMiddleware = require('../middleware/jwt.js');
 
 const router = express.Router();
 
-router.post("/", verifyToken, createService);
-router.delete("/:id", verifyToken, deleteService);
-router.get("/single/:id", getService);
-router.get("/all", getServices);
+router.post("/", jwtMiddleware.verifyToken, spController.createService);
+router.delete("/:id", jwtMiddleware.verifyToken, spController.deleteService);
+router.get("/single/:id", spController.getService);
+router.get("/all", spController.getServices);
 
-export default router;
+module.exports = router;

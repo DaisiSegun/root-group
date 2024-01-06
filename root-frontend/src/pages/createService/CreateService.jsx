@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import './CreateService.scss'
 import Header from '../../components/header/Header'
 
@@ -11,6 +11,9 @@ import upload from "../../../utils/upload.js";
 import { CircleLoader} from "react-spinners";
 
 function CreateService() {
+  useEffect(() => {
+    document.title = 'Create Service';
+  }, []);
 
   const [singleFile, setSingleFile] = useState(undefined);
   const [files, setFiles] = useState([]);
@@ -106,7 +109,10 @@ function CreateService() {
               <option value="Personal Shopping & Errands">Personal Shopping & Errands</option>
               <option value="Carpentry">Carpentry</option>
               <option value="Research Project Assistant">Research Project Assistant</option>
-              <option value=" ">Catering</option>
+              <option value="Catering">Catering</option>
+              <option value="Interior Decoration">Interior Decoration</option>
+              <option value="Hairdresser">Hairdresser</option>
+              <option value="MC">MC</option>
 
           </select>
 

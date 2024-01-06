@@ -1,8 +1,11 @@
 // TermsAndConditionsPage.js
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import './TermsAndConditionsPage.scss'
 const TermsAndConditionsPage = () => {
+  useEffect(() => {
+    document.title = 'Terms and Conditions';
+  }, []);
   return (
     <div className="terms-page">
       <h1>Root Marketplace Terms and Conditions</h1>

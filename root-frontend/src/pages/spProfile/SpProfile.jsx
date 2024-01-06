@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import Header from '../../components/header/Header';
@@ -17,9 +17,22 @@ import { Link, useParams } from 'react-router-dom';
 import getCurrentUser from '../../../utils/getCurrentUser.js';
 import SwipeIcon from '@mui/icons-material/Swipe';
 import swipeImg from '../../images/swipe.svg'
+import { ClipLoader } from "react-spinners";
+import { css } from "@emotion/react";
+
+
+const override = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use 100vh to make it full height */
+`;
 
 
 function SpProfile() {
+  useEffect(() => {
+    document.title = 'View Profile';
+  }, []);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const { id } = useParams();
@@ -53,7 +66,7 @@ function SpProfile() {
     });
 
   if (isLoading || isLoadingUser) {
-    return <div>Loading...</div>;
+    return <ClipLoader color={"#36D7B7"} css={override} size={150} />;
   }
 
   if (error || errorUser) {
@@ -72,8 +85,25 @@ function SpProfile() {
   });
 
   const openWhatsApp = () => {
-    // Your openWhatsApp function
+    if (!currentUser) {
+      // If no user is logged in, redirect to the signup page
+      window.location.href = '/register';
+    } else {
+      const message = `I want to hire ${dataUser.username} (${data.title})`;
+      const phoneNumber = '+2349019971557'; // Replace with the actual phone number
+    const openWhatsApp = () => {
+      // Your openWhatsApp function
+    };
+  
+      // Construct the WhatsApp link
+      const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const currentUser = getCurrentUser();
+  
+      // Open the link in a new tab
+      window.open(whatsappLink, '_blank');
+    }
   };
+  
 
   const currentUser = getCurrentUser();
 

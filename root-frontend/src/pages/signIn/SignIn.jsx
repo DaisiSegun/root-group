@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SignIn.scss';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,9 @@ const override = css`
 `;
 
 function SignIn() {
+  useEffect(() => {
+    document.title = 'Sign In';
+  }, []);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
